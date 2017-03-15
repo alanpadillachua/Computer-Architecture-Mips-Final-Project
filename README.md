@@ -38,6 +38,7 @@ blue moons and the other calculated seasonal blue moons.
 The easiest one to calculate is the monthly bluemoons. For this function I load the
 previouses moon index value and then with the julian date of the current fullmoon I calculate themonth of which the julian date is in. If both those months are the same then it returns a 1 if not
 then it returns a 0. The pseudocode looks like this:
+      
       boolean BlueMonthCal(int prevMonthIndex, int curJulianDate){
       if(leapyear(){
         for(int i = 0; i < leapYearArray.length; i++){
@@ -71,6 +72,7 @@ array because we will need it in order to identify the full moon that is conside
 seasonal moon. Once the counter reaches 4 it is then that we jump into another if statement
 that goes ahead and calls the output function to print to the user that that full moon is the
 seasonal blue moon of that corresponding season. The pseudo code looks as follows:
+        
         void BlueSeasonCal(){
           if(JD >=79 && JD < 172){
             springMoon++;
@@ -112,27 +114,28 @@ requested Year the algorithm for output is essentially the same in incrementing 
 moons until the year is passed. However the dates and times calculated to accumulate an error
 offset the further the requested year is from the reference year. The finale pseudo code is as
 follows including the function calls for monthly and seasonal full moons and output.
+
 pseudo code:
-  springMoon=0;
-  summerMoon=0;
-  fallMoon=0;
-  winterMoon=0;
-  while(RefYear < ReqYear){
-      RefDay += 29;
-      RefHour += 12;
-      RefMin +=43;if(RefMin >= 60){
-        RefMin -= 60;
-        RefHour++;}
-      if(RefHour >= 24){
-        RefHour -=24;
-        RefDay++;}
-      if(RefYear is leapyear && RefDay > 366){
-        RefYear++;
-        RefDay -= 366;}
-      else if (RefDay > 365){
-        RefYear++;
-        RefDay-=365;}
-    MonthBlueMoon(RefDay);
-    SeasonalBlueMoon(RefDay);
-    Output();
-}
+        
+        springMoon=0;
+        summerMoon=0;
+        fallMoon=0;
+        winterMoon=0;
+        while(RefYear < ReqYear){
+            RefDay += 29;
+            RefHour += 12;
+            RefMin +=43;if(RefMin >= 60){
+              RefMin -= 60;
+              RefHour++;}
+            if(RefHour >= 24){
+              RefHour -=24;
+              RefDay++;}
+            if(RefYear is leapyear && RefDay > 366){
+              RefYear++;
+              RefDay -= 366;}
+            else if (RefDay > 365){
+              RefYear++;
+              RefDay-=365;}
+          MonthBlueMoon(RefDay);
+          SeasonalBlueMoon(RefDay);
+          Output();}
