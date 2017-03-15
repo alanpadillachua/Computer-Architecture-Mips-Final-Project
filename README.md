@@ -38,26 +38,26 @@ blue moons and the other calculated seasonal blue moons.
 The easiest one to calculate is the monthly bluemoons. For this function I load the
 previouses moon index value and then with the julian date of the current fullmoon I calculate themonth of which the julian date is in. If both those months are the same then it returns a 1 if not
 then it returns a 0. The pseudocode looks like this:
-boolean BlueMonthCal(int prevMonthIndex, int curJulianDate){
-if(leapyear(){
-for(int i = 0; i < leapYearArray.length; i++){
-if(curJulianDate< leapYeaArray[i]){
-if((leapYearArray[i]-1) == prevMonthIndex){
-return true;
-}
-else
-return false;}
-}
-else
-for(int i = 0; i < YearArray.length; i++){
-if(curJulianDate< lYeaArray[i]){
-if((YearArray[i] -1_== prevMonthIndex){
-return true;
-}
-else
-return false;
-}
-}
+      boolean BlueMonthCal(int prevMonthIndex, int curJulianDate){
+      if(leapyear(){
+        for(int i = 0; i < leapYearArray.length; i++){
+          if(curJulianDate< leapYeaArray[i]){
+            if((leapYearArray[i]-1) == prevMonthIndex){
+              return true;
+      }
+      else
+        return false;}
+      }
+      else
+        for(int i = 0; i < YearArray.length; i++){
+          if(curJulianDate< lYeaArray[i]){
+            if((YearArray[i] -1_== prevMonthIndex){
+              return true;
+      }
+      else
+        return false;
+     }
+    }
 For the BlueSeasonalMoon function it required a bit more calculations and registers to
 keep track of. First before the function is called inside my fullmoon function I set 4 counters set
 to zero. One counter for each season. Then during the calculation of fullmoon I send the julian
@@ -71,38 +71,38 @@ array because we will need it in order to identify the full moon that is conside
 seasonal moon. Once the counter reaches 4 it is then that we jump into another if statement
 that goes ahead and calls the output function to print to the user that that full moon is the
 seasonal blue moon of that corresponding season. The pseudo code looks as follows:
-void BlueSeasonCal(){
-if(JD >=79 && JD < 172){
-springMoon++;
-if(springMoon ==3){
-JD = BMSP;}
-if(springMoon ==4){
-Output: Seasonal Blue Moon:
-}}
-if(JD >= 172 && JD < 266){
-summerMoon++;
-if(summerMoon == 3){
-JD = BMSU;}
-if(summerMoon ==4){
-Output: Seasonal Blue Moon:
-}
-}
-if(JD >= 226 && JD < 356){
-fallMoon++;
-if(fallMoon == 3){
-JD = BMFL;}
-if(fallMoon ==4){
-Output: Seasonal Blue Moon:
-}
-}
-if(JD >= 356 || JD < 79){
-winterMoon++;
-if(winterMoon == 3){
-JD = BMWI;}
-if(winterMoon ==4){
-Output: Seasonal Blue Moon:
-}
-}
+        void BlueSeasonCal(){
+          if(JD >=79 && JD < 172){
+            springMoon++;
+              if(springMoon ==3){
+                JD = BMSP;}
+              if(springMoon ==4){
+                Output: Seasonal Blue Moon:
+          }}
+          if(JD >= 172 && JD < 266){
+            summerMoon++;
+            if(summerMoon == 3){
+              JD = BMSU;}
+            if(summerMoon ==4){
+              Output: Seasonal Blue Moon:
+            }
+          }
+          if(JD >= 226 && JD < 356){
+            fallMoon++;
+              if(fallMoon == 3){
+                JD = BMFL;}
+              if(fallMoon ==4){
+              Output: Seasonal Blue Moon:
+              }
+          }
+          if(JD >= 356 || JD < 79){
+              winterMoon++;
+            if(winterMoon == 3){
+              JD = BMWI;}
+            if(winterMoon ==4){
+            Output: Seasonal Blue Moon:
+          }
+        }
 Finally the process is complete. These functions are called within the FullMoonCalculator
 function. The function is based on loops. To find the next full moon we increment 29 days, 12
 hours and 43 minutes and adjust for overflow. This is done until the reference year is equal to
@@ -113,26 +113,26 @@ moons until the year is passed. However the dates and times calculated to accumu
 offset the further the requested year is from the reference year. The finale pseudo code is as
 follows including the function calls for monthly and seasonal full moons and output.
 pseudo code:
-springMoon=0;
-summerMoon=0;
-fallMoon=0;
-winterMoon=0;
-while(RefYear < ReqYear){
-RefDay += 29;
-RefHour += 12;
-RefMin +=43;if(RefMin >= 60){
-RefMin -= 60;
-RefHour++;}
-if(RefHour >= 24){
-RefHour -=24;
-RefDay++;}
-if(RefYear is leapyear && RefDay > 366){
-RefYear++;
-RefDay -= 366;}
-else if (RefDay > 365){
-RefYear++;
-RefDay-=365;}
-MonthBlueMoon(RefDay);
-SeasonalBlueMoon(RefDay);
-Output();
+  springMoon=0;
+  summerMoon=0;
+  fallMoon=0;
+  winterMoon=0;
+  while(RefYear < ReqYear){
+      RefDay += 29;
+      RefHour += 12;
+      RefMin +=43;if(RefMin >= 60){
+        RefMin -= 60;
+        RefHour++;}
+      if(RefHour >= 24){
+        RefHour -=24;
+        RefDay++;}
+      if(RefYear is leapyear && RefDay > 366){
+        RefYear++;
+        RefDay -= 366;}
+      else if (RefDay > 365){
+        RefYear++;
+        RefDay-=365;}
+    MonthBlueMoon(RefDay);
+    SeasonalBlueMoon(RefDay);
+    Output();
 }
